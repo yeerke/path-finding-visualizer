@@ -1,20 +1,34 @@
 function visualizePath() {
   	isAbleToClick = false;
-	let path = shortestPath();
-	function writeNext() {
-		if (path.isEmpty()) {
-			isAbleToClick = true;
-			return;
-		}
-		let position = path.front();
-		path.pop();
-		ctx.fillStyle = "#000000";
-		ctx.fillRect(position.x * 50, position.y * 50, 50, 50);
-		setTimeout(function() {
-			writeNext();
-		}, 20);
+	let ans = shortestPath();
+	let parent = ans[1];
+	let points = ans[0];
+	let temp = endPoint;
+	let path = new Array();	
+	while (!temp.isEqual(startPoint)) {
+		path.push(temp);
+		temp = parent[temp.x][temp.y];
 	}
-	writeNext();
+	path.push(startPoint);
+	path.reverse();
+	writeNext(points, "#000000");
+	setTimeout(function() {
+		writeNext(path, "#FF0000")
+	}, points.length * 20 + 1000);
+}
+
+function writeNext(path, color) {
+	if (path.length === 0) {
+		isAbleToClick = true;
+		return;
+	}
+	let position = path[0];
+	path.shift();
+	ctx.fillStyle = color;
+	ctx.fillRect(position.x * 50, position.y * 50, 50, 50);
+	setTimeout(function() {
+		writeNext(path);
+	}, 20);
 }
 
 function clear() {

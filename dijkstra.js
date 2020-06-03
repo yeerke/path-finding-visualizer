@@ -2,12 +2,12 @@ function shortestPath() {
     let used = initializeArray(false, 14, 14);
     used[startPoint.x][startPoint.y] = true;
 
-    let parent = initializeArray(false, 14, 14);
+    let parent = initializeArray(new Point(), 14, 14);
 
     let q = new Queue();
     q.push(startPoint);
 
-    let path = new Queue();
+    let path = new Array();
     while (!q.isEmpty()) {
         let position = q.front();
         q.pop();
@@ -25,7 +25,7 @@ function shortestPath() {
             }
         }
     }
-    return path;
+    return [path, parent];
 }
 
 function isValid(pos) {
