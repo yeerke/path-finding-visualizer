@@ -42,12 +42,3 @@ function setClick(event) {
         canDraw = true;
     }
 }
-
-function init() {
-    for (let i = 0; i < isWall.length; i++) {
-        isWall[i] = new Array(14);
-        for (let j = 0; j < isWall[i].length; ++j) {
-            isWall[i][j] = false;
-        }
-    }    
-}

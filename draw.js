@@ -1,12 +1,3 @@
-function tryDrawWal(event) {
-	if (!canDraw) return; 
-	x = Math.floor(event.pageX / 50);
-	y = Math.floor(event.pageY / 50);
-	ctx.fillStyle = "#0000FF";
-	isWall[x][y] = true;
-	ctx.fillRect(x * 50, y * 50, 50, 50);
-}
-
 function visualizePath() {
   	isAbleToClick = false;
 	var list = shortestPath();
