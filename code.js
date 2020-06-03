@@ -1,10 +1,12 @@
 var click = false;
 var x1, y1, x2, y2;
+var isAbleToClick = true;
 document.addEventListener('DOMContentLoaded', function() {
     clear();
     document.getElementById("cnvs").addEventListener('mousedown', f);
 });
 function f(event) {
+    if (!isAbleToClick) return;
     if (click) {
         x2 = Math.floor(event.pageX / 50);
         y2 = Math.floor(event.pageY / 50);
@@ -35,9 +37,13 @@ function clear() {
 }
 
 function visualize() {
+    isAbleToClick = false;
     var list = shortestPath(x1, y1, x2, y2);
     function writeNext() {
-        if (list.isEmpty()) return;
+        if (list.isEmpty()) {
+            isAbleToClick = true;
+            return;
+        }
         var canvas = document.getElementById("cnvs");
         var ctx = canvas.getContext("2d");
         let f = list.front();
