@@ -5,6 +5,8 @@ var canvas, ctx
 var canDraw = false;
 var isWall;
 
+const length = 14, height = 14, gridLenth = 50;
+
 document.addEventListener('DOMContentLoaded', function() {
     isWall = initializeArray(false, 14, 14);
     canvas = document.getElementById("cnvs");
@@ -31,11 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
 function setClick(event) {
     if (!isAbleToClick) return;
     if (click == 1) {
-        endPoint = new Point(Math.floor(event.pageX / 50), Math.floor(event.pageY / 50));
+        endPoint = new Point(Math.floor(event.pageX / gridLenth), Math.floor(event.pageY / gridLenth));
         visualizePath();
         click = -1;
     } else if (click == 0){
-        startPoint = new Point(Math.floor(event.pageX / 50), Math.floor(event.pageY / 50));
+        startPoint = new Point(Math.floor(event.pageX / gridLenth), Math.floor(event.pageY / gridLenth));
     } else if (click == 3){
         canDraw = true;
     }
