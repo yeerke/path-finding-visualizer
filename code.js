@@ -1,12 +1,12 @@
 var click = -1;
-var x1, y1, x2, y2;
+var startPoint, endPoint;
 var isAbleToClick = true;
 var canvas, ctx
 var canDraw = false;
-var isWall = new Array(14);
+var isWall;
 
 document.addEventListener('DOMContentLoaded', function() {
-    init();
+    isWall = initializeArray(false, 14, 14);
     canvas = document.getElementById("cnvs");
     ctx = canvas.getContext("2d");
     clear();
@@ -31,14 +31,23 @@ document.addEventListener('DOMContentLoaded', function() {
 function setClick(event) {
     if (!isAbleToClick) return;
     if (click == 1) {
-        x2 = Math.floor(event.pageX / 50);
-        y2 = Math.floor(event.pageY / 50);
+        endPoint = new Point(Math.floor(event.pageX / 50), Math.floor(event.pageY / 50));
         visualizePath();
         click = -1;
     } else if (click == 0){
-        x1 = Math.floor(event.pageX / 50);
-        y1 = Math.floor(event.pageY / 50);
+        startPoint = new Point(Math.floor(event.pageX / 50), Math.floor(event.pageY / 50));
     } else if (click == 3){
         canDraw = true;
     }
+}
+
+function initializeArray(value, height, width) {
+    var array = new Array(height);
+    for (let i = 0; i < height; i++) {
+        array[i] = new Array(width);
+        for (let j = 0; j < width; ++j) {
+            array[i][j] = value;
+        }
+    }    
+    return array;
 }

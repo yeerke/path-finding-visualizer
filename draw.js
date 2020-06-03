@@ -1,15 +1,15 @@
 function visualizePath() {
   	isAbleToClick = false;
-	var list = shortestPath();
+	let path = shortestPath();
 	function writeNext() {
-		if (list.isEmpty()) {
+		if (path.isEmpty()) {
 			isAbleToClick = true;
 			return;
 		}
-		let f = list.front();
-		list.pop();
+		let position = path.front();
+		path.pop();
 		ctx.fillStyle = "#000000";
-		ctx.fillRect(f[0] * 50, f[1] * 50, 50, 50);
+		ctx.fillRect(position.x * 50, position.y * 50, 50, 50);
 		setTimeout(function() {
 			writeNext();
 		}, 20);
