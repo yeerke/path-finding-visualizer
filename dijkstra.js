@@ -1,30 +1,4 @@
-class Queue { 
-    constructor() { 
-        this.items = []; 
-    } 
-                  
-    push(element) {     
-        this.items.push(element); 
-    }
-    
-    pop() { 
-        if(this.isEmpty()) 
-            return "Underflow"; 
-        return this.items.shift(); 
-    }
-    
-    front() { 
-        if(this.isEmpty()) 
-            return "No elements in Queue"; 
-        return this.items[0]; 
-    } 
-    
-    isEmpty() { 
-        return this.items.length == 0; 
-    } 
-} 
-
-function shortestPath(x1, y1, x2, y2) {
+function shortestPath(x1, y1, x2, y2, isWall) {
     var q = new Queue();
     q.push([x1, y1]);
     var used = new Array(14);
@@ -49,6 +23,7 @@ function shortestPath(x1, y1, x2, y2) {
                 if (f[0] + dx < 0 || f[0] + dx >= 14) continue;
                 if (f[1] + dy < 0 || f[1] + dy >= 14) continue;
                 if (used[f[0] + dx][f[1] + dy]) continue;
+                if (isWall[f[0] + dx][f[1] + dy]) continue;
                 used[f[0] + dx][f[1] + dy] = true;
                 q.push([f[0] + dx, f[1] + dy]);
             }
