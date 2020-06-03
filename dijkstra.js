@@ -1,4 +1,4 @@
-function shortestPath(x1, y1, x2, y2, isWall) {
+function shortestPath() {
     var q = new Queue();
     q.push([x1, y1]);
     var used = new Array(14);
