@@ -11,13 +11,13 @@ function visualizePath() {
 	}
 	path.push(startPoint);
 	path.reverse();
-	writeNext(points, grey);
+	drawNext(points, grey);
 	setTimeout(function() {
-		writeNext(path, red)
-	}, points.length * 20 + 1000);
+		drawNext(path, red)
+	}, points.length * time + 2000);
 }
 
-function writeNext(path, color) {
+function drawNext(path, color) {
 	if (path.length === 0) {
 		isAbleToClick = true;
 		return;
@@ -29,8 +29,8 @@ function writeNext(path, color) {
 		ctx.fillRect(position.x * gridLenth + 1, position.y * gridLenth + 1, gridLenth - 2, gridLenth - 2);
 	}
 	setTimeout(function() {
-		writeNext(path);
-	}, 20);
+		drawNext(path);
+	}, time);
 }
 
 function drawPoint(color, x, y) {
@@ -48,7 +48,7 @@ function clear() {
 	}
 	for (let i = 0; i < canvas.height; i += gridLenth) {
 		ctx.moveTo(0, i);
-		ctx.lineTo(canvas.height, i);
+		ctx.lineTo(canvas.width, i);
 		ctx.stroke();
 	}
 	drawPoint(green, endPoint.x, endPoint.y);
@@ -57,16 +57,18 @@ function clear() {
 
 function tryDrawWal(event) {
 	if (!canDraw) return; 
-	let x = Math.floor(event.pageX / gridLenth);
-	let y = Math.floor(event.pageY / gridLenth);
+	let pos = getMousePos(event);
+	let x = Math.floor(pos.x / gridLenth);
+	let y = Math.floor(pos.y / gridLenth);
 	ctx.fillStyle = blue;
 	isWall[x][y] = true;
 	ctx.fillRect(x * gridLenth + 1, y * gridLenth + 1, gridLenth - 2, gridLenth - 2);
 }
 
 function movePoint(event) {
-	let x = Math.floor(event.pageX / gridLenth);
-	let y = Math.floor(event.pageY / gridLenth);
+	let pos = getMousePos(event);
+	let x = Math.floor(pos.x / gridLenth);
+	let y = Math.floor(pos.y / gridLenth);
 	ctx.fillStyle = white;
     if (movingPoint == 1) {
         ctx.fillRect(startPoint.x * gridLenth + 1, startPoint.y * gridLenth + 1, gridLenth - 2, gridLenth - 2);

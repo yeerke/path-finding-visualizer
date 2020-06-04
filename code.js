@@ -5,7 +5,8 @@ var canDraw = false;
 var isWall;
 var movingPoint = 0; 
 
-const length = 14, height = 14, gridLenth = 50;
+const length = 56, height = 28, gridLenth = 25;
+const time = 10;
 const green = "#00FF00";
 const grey = "#808080";
 const white = "#FFFFFF";
@@ -39,9 +40,10 @@ function move(event) {
 
 function setClick(event) {
     if (!isAbleToClick) return;
-    if (startPoint.isEqual(new Point(Math.floor(event.pageX / gridLenth), Math.floor(event.pageY / gridLenth)))) {
+    let pos = getMousePos(event);
+    if (startPoint.isEqual(new Point(Math.floor(pos.x / gridLenth), Math.floor(pos.y / gridLenth)))) {
         movingPoint = 1;
-    } else if (endPoint.isEqual(new Point(Math.floor(event.pageX / gridLenth), Math.floor(event.pageY / gridLenth)))) {
+    } else if (endPoint.isEqual(new Point(Math.floor(pos.x / gridLenth), Math.floor(pos.y / gridLenth)))) {
         movingPoint = 2;
     } else {
         canDraw = true;
@@ -57,4 +59,9 @@ function initializeArray(value, height, width) {
         }
     }    
     return array;
+}
+
+function getMousePos(event) {
+    let rect = canvas.getBoundingClientRect();
+    return new Point(event.clientX - rect.left, event.clientY - rect.top);
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <title>Path Finding Visualizer</title>
         <script src="queue.js"></script>
         <script src="point.js"></script>
@@ -9,10 +10,11 @@
         <script src="code.js"></script>
     </head>
     <body>
-        <canvas id="cnvs" width="700" height="700" style="border:1px solid #000000;">
-        </canvas>
+        <button type="button" class="btn btn-dark" id="btn">Clear</button>
+        <button type="button" class="btn btn-dark" id="path">Find Path</button>
         <div></div>
-        <button id="btn">Clear</button>
-        <button id="path">Find Path</button>
+        <canvas id="cnvs" width="1400" height="700" style="border:1px solid #000000;">
+        </canvas>
+       
     </body>
 </html>
