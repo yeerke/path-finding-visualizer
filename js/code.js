@@ -8,12 +8,11 @@ var movingPoint = 0;
 const length = 56, height = 28, gridLenth = 25;
 const time = 10;
 const green = "#00FF00";
-const grey = "#808080";
+const cyan = "#5DBCD2";
 const white = "#FFFFFF";
 const black = "#000000";
 const yellow = "#FFFF00";
 const blue = "#0000FF";
-const red = "#FF0000";
 
 document.addEventListener('DOMContentLoaded', function() {
     canvas = document.getElementById("cnvs");

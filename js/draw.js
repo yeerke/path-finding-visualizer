@@ -11,9 +11,9 @@ function visualizePath() {
 	}
 	path.push(startPoint);
 	path.reverse();
-	drawNext(points, grey);
+	drawNext(points, cyan);
 	setTimeout(function() {
-		drawNext(path, red)
+		drawNext(path, yellow)
 	}, points.length * time + 2000);
 }
 
@@ -26,7 +26,19 @@ function drawNext(path, color) {
 	path.shift();
 	ctx.fillStyle = color;
 	if (!position.isEqual(startPoint) && !position.isEqual(endPoint)) {
-		ctx.fillRect(position.x * gridLenth + 1, position.y * gridLenth + 1, gridLenth - 2, gridLenth - 2);
+		ctx.beginPath();
+		ctx.arc(position.x * gridLenth + gridLenth / 2, position.y * gridLenth + gridLenth / 2, 4, 0, 2 * Math.PI);
+		ctx.fill();
+		setTimeout(function() {
+			ctx.beginPath();
+			ctx.arc(position.x * gridLenth + gridLenth / 2, position.y * gridLenth + gridLenth / 2, 8, 0, 2 * Math.PI);
+			ctx.fill();
+			setTimeout(function() {
+				ctx.beginPath();
+				ctx.arc(position.x * gridLenth + gridLenth / 2, position.y * gridLenth + gridLenth / 2, 11.5, 0, 2 * Math.PI);
+				ctx.fill();
+			}, 200);
+		}, 200);
 	}
 	setTimeout(function() {
 		drawNext(path);
