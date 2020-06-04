@@ -41,6 +41,7 @@ function drawPoint(color, x, y) {
 function clear() {
 	ctx.fillStyle = white;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	isWall = initializeArray(false, length, height);
 	for (let i = 0; i < canvas.width; i += gridLenth) {
 		ctx.moveTo(i, 0);
 		ctx.lineTo(i, canvas.height);

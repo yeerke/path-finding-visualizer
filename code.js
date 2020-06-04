@@ -16,7 +16,6 @@ const blue = "#0000FF";
 const red = "#FF0000";
 
 document.addEventListener('DOMContentLoaded', function() {
-    isWall = initializeArray(false, length, height);
     canvas = document.getElementById("cnvs");
     ctx = canvas.getContext("2d");
     clear();
