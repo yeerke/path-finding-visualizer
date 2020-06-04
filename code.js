@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
     canvas = document.getElementById("cnvs");
     ctx = canvas.getContext("2d");
     clear();
+    document.getElementById('got').addEventListener('click', function() {
+        var div = document.getElementById('div'); 
+        div.parentNode.removeChild(div); 
+    });
     document.getElementById("btn").addEventListener("click", clear);
     document.getElementById("path").addEventListener("click", visualizePath);
     document.getElementById("cnvs").addEventListener('mouseup', function() {

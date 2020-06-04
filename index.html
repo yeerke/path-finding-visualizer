@@ -8,11 +8,24 @@
         <script src="draw.js"></script>
         <script src="dijkstra.js"></script>
         <script src="code.js"></script>
+        <style>
+            div {
+                background-color: lightgrey;
+                width: 300px;
+                border: 15px solid green;
+                padding: 50px;
+                margin: 20px;
+            }
+        </style>
     </head>
     <body>
         <button type="button" class="btn btn-dark" id="btn">Clear</button>
         <button type="button" class="btn btn-dark" id="path">Find Path</button>
-        <div></div>
+        <div id="div">This is a website that vizualises a path finding algorithm.
+            Yellow is the start point and Green is the end point of path. You can move end points 
+            with just clicking on point and moving around. You can also add wall with the same thing above.
+            <button type="button" class="btn btn-dark" id="got">Got it!</button>
+        </div>
         <canvas id="cnvs" width="1400" height="700" style="border:1px solid #000000;">
         </canvas>
        
