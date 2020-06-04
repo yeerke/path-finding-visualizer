@@ -1,7 +1,7 @@
 var startPoint = new Point(3, 3), endPoint = new Point(10, 10);
 var isAbleToClick = true;
 var canvas, ctx;
-var canDraw = false;
+var canDrawWal = false;
 var isWall;
 var movingPoint = 0; 
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("btn").addEventListener("click", clear);
     document.getElementById("path").addEventListener("click", visualizePath);
     document.getElementById("cnvs").addEventListener('mouseup', function() {
-        canDraw = movingPoint = 0;
+        canDrawWal = movingPoint = 0;
     });
     document.getElementById("cnvs").addEventListener('mousedown', setClick);
 
@@ -31,6 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function move(event) {
+    let pos = getMousePos(event);
+    if (pos.x >= canvas.left || pos.y >= canvas.height || pos.x < 0 || pos.y < 0) {
+        movingPoint = 0;
+        canDrawWal = false;
+    }
     if (movingPoint == 0) {
         tryDrawWal(event);
     } else {
@@ -46,7 +51,7 @@ function setClick(event) {
     } else if (endPoint.isEqual(new Point(Math.floor(pos.x / gridLenth), Math.floor(pos.y / gridLenth)))) {
         movingPoint = 2;
     } else {
-        canDraw = true;
+        canDrawWal = true;
     }
 }
 

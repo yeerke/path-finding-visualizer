@@ -56,7 +56,7 @@ function clear() {
 }
 
 function tryDrawWal(event) {
-	if (!canDraw) return; 
+	if (!canDrawWal) return; 
 	let pos = getMousePos(event);
 	let x = Math.floor(pos.x / gridLenth);
 	let y = Math.floor(pos.y / gridLenth);
