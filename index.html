@@ -9,25 +9,42 @@
         <script src="dijkstra.js"></script>
         <script src="code.js"></script>
         <style>
-            div {
+            #canvas-wrap { 
+                position:relative 
+            } 
+            #tutorial { 
+                position:absolute; 
+                top:20px; 
+                left:500px; 
                 background-color: lightgrey;
                 width: 300px;
-                border: 15px solid green;
+                border: 15px solid rgb(15, 240, 240);
                 padding: 50px;
                 margin: 20px;
+            }
+            #canvas-wrap { 
+                position:relative; 
+                width:800px; 
+                height:600px 
+            }
+            #canvas-wrap canvas { 
+                position:absolute; 
+                top:0; 
+                left:0; 
+                z-index:0 
             }
         </style>
     </head>
     <body>
         <button type="button" class="btn btn-dark" id="btn">Clear</button>
         <button type="button" class="btn btn-dark" id="path">Find Path</button>
-        <div id="div">This is a website that vizualises a path finding algorithm.
-            Yellow is the start point and Green is the end point of path. You can move end points 
-            with just clicking on point and moving around. You can also add wall with the same thing above.
-            <button type="button" class="btn btn-dark" id="got">Got it!</button>
+        <div id="canvas-wrap">
+            <canvas id="cnvs" width="1400" height="700" style="border:1px solid #000000;"></canvas>
+            <div id="tutorial">This is a website that vizualizes a path finding algorithm.
+                Yellow is the start point and Green is the end point of path. You can move end points 
+                with just clicking on point and moving around. You can also add wall with the same thing above.
+                <button type="button" class="btn btn-dark" id="got">Got it!</button>
+            </div>
         </div>
-        <canvas id="cnvs" width="1400" height="700" style="border:1px solid #000000;">
-        </canvas>
-       
     </body>
 </html>
