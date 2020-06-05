@@ -69,11 +69,12 @@ function clear() {
     drawPoint(yellow, startPoint.x, startPoint.y);
 }
 
-function tryDrawWal(event) {
+function tryMakeWal(event) {
 	if (!canDrawWal) return; 
 	let pos = getMousePos(event);
 	let x = Math.floor(pos.x / gridLenth);
 	let y = Math.floor(pos.y / gridLenth);
+	if (startPoint.isEqual(new Point(x, y)) || endPoint.isEqual(new Point(x, y))) return;
 	ctx.fillStyle = blue;
 	isWall[x][y] = true;
 	ctx.fillRect(x * gridLenth + 7, y * gridLenth + 7, gridLenth - 14, gridLenth - 14);
@@ -85,10 +86,11 @@ function tryDrawWal(event) {
 	}, 300);
 }
 
-function movePoint(event) {
+function tryMovePoint(event) {
 	let pos = getMousePos(event);
 	let x = Math.floor(pos.x / gridLenth);
 	let y = Math.floor(pos.y / gridLenth);
+	if (isWall[x][y]) return;
 	ctx.fillStyle = white;
     if (movingPoint == 1) {
         ctx.fillRect(startPoint.x * gridLenth + 1, startPoint.y * gridLenth + 1, gridLenth - 2, gridLenth - 2);

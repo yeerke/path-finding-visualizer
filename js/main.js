@@ -39,9 +39,9 @@ function move(event) {
         canDrawWal = false;
     }
     if (movingPoint == 0) {
-        tryDrawWal(event);
+        tryMakeWal(event);
     } else {
-        movePoint(event);
+        tryMovePoint(event);
     }
 }
 
