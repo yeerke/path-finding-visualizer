@@ -1,4 +1,5 @@
 function visualizePath() {
+	if (!isAbleToClick) return;
   	isAbleToClick = false;
 	let shortestpath = shortestPath();
 	let parentPath = shortestpath.parentPath;
@@ -12,6 +13,7 @@ function visualizePath() {
 	path.push(startPoint);
 	path.reverse();
 	drawNext(allPath, cyan);
+	isAbleToClick = false;
 	setTimeout(function() {
 		drawNext(path, yellow)
 	}, allPath.length * time + 2000);
@@ -52,6 +54,7 @@ function drawPoint(color, x, y) {
 }
 
 function clear() {
+	if (!isAbleToClick) return;
 	ctx.fillStyle = white;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 	isWall = initializeArray(false, length, height);
