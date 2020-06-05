@@ -13,7 +13,7 @@ function visualizePath() {
 	path.reverse();
 	drawNext(points, cyan);
 	setTimeout(function() {
-		drawNext(path, yellow, true)
+		drawNext(path, yellow)
 	}, points.length * time + 2000);
 }
 
