@@ -25,6 +25,9 @@ function shortestPath() {
             }
         }
     }
-    return [path, parent];
+    return {
+        allPath: path,
+        parentPath: parent
+    };
 }
 

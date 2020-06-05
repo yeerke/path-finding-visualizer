@@ -1,20 +1,20 @@
 function visualizePath() {
   	isAbleToClick = false;
-	let ans = shortestPath();
-	let parent = ans[1];
-	let points = ans[0];
+	let shortestpath = shortestPath();
+	let parentPath = shortestpath.parentPath;
+	let allPath = shortestpath.allPath;
 	let temp = endPoint;
 	let path = new Array();	
 	while (!temp.isEqual(startPoint)) {
 		path.push(temp);
-		temp = parent[temp.x][temp.y];
+		temp = parentPath[temp.x][temp.y];
 	}
 	path.push(startPoint);
 	path.reverse();
-	drawNext(points, cyan);
+	drawNext(allPath, cyan);
 	setTimeout(function() {
 		drawNext(path, yellow)
-	}, points.length * time + 2000);
+	}, allPath.length * time + 2000);
 }
 
 function drawNext(path, color) {
