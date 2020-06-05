@@ -69,7 +69,7 @@ function clear() {
     drawPoint(yellow, startPoint.x, startPoint.y);
 }
 
-function tryMakeWal(event) {
+function tryMakeWall(event) {
 	if (!canDrawWal) return; 
 	let pos = getMousePos(event);
 	let x = Math.floor(pos.x / gridLenth);

@@ -40,7 +40,7 @@ function handleMouseMove(event) {
         return;
     }
     if (movingPoint == 0) {
-        tryMakeWal(event);
+        tryMakeWall(event);
     } else {
         tryMovePoint(event);
     }
