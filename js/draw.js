@@ -13,7 +13,7 @@ function visualizePath() {
 	path.reverse();
 	drawNext(points, cyan);
 	setTimeout(function() {
-		drawNext(path, yellow)
+		drawNext(path, yellow, true)
 	}, points.length * time + 2000);
 }
 
@@ -25,7 +25,8 @@ function drawNext(path, color) {
 	let position = path[0];
 	path.shift();
 	ctx.fillStyle = color;
-	if (!position.isEqual(startPoint) && !position.isEqual(endPoint)) {
+	if ((!position.isEqual(startPoint) && !position.isEqual(endPoint)) || 
+		(position.isEqual(endPoint) && color === yellow)) {
 		ctx.beginPath();
 		ctx.arc(position.x * gridLenth + gridLenth / 2, position.y * gridLenth + gridLenth / 2, 4, 0, 2 * Math.PI);
 		ctx.fill();
@@ -41,7 +42,7 @@ function drawNext(path, color) {
 		}, 200);
 	}
 	setTimeout(function() {
-		drawNext(path);
+		drawNext(path, color);
 	}, time);
 }
 
@@ -75,7 +76,13 @@ function tryDrawWal(event) {
 	let y = Math.floor(pos.y / gridLenth);
 	ctx.fillStyle = blue;
 	isWall[x][y] = true;
-	ctx.fillRect(x * gridLenth + 1, y * gridLenth + 1, gridLenth - 2, gridLenth - 2);
+	ctx.fillRect(x * gridLenth + 7, y * gridLenth + 7, gridLenth - 14, gridLenth - 14);
+	setTimeout(function() {
+		ctx.fillRect(x * gridLenth + 3, y * gridLenth + 3, gridLenth - 6, gridLenth - 6);
+		setTimeout(function() {
+			ctx.fillRect(x * gridLenth + 1, y * gridLenth + 1, gridLenth - 2, gridLenth - 2);
+		}, 100);
+	}, 300);
 }
 
 function movePoint(event) {

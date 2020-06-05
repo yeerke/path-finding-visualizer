@@ -12,7 +12,7 @@ const cyan = "#5DBCD2";
 const white = "#FFFFFF";
 const black = "#000000";
 const yellow = "#FFFF00";
-const blue = "#0000FF";
+const blue = "#163B66";
 
 document.addEventListener('DOMContentLoaded', function() {
     canvas = document.getElementById("cnvs");
