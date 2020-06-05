@@ -27,16 +27,17 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("cnvs").addEventListener('mouseup', function() {
         canDrawWal = movingPoint = 0;
     });
-    document.getElementById("cnvs").addEventListener('mousedown', setClick);
+    document.getElementById("cnvs").addEventListener('mousedown', handleClick);
 
-    document.addEventListener("mousemove", move);
+    document.addEventListener("mousemove", handleMouseMove);
 });
 
-function move(event) {
+function handleMouseMove(event) {
     let pos = getMousePos(event);
     if (pos.x >= canvas.left || pos.y >= canvas.height || pos.x < 0 || pos.y < 0) {
         movingPoint = 0;
         canDrawWal = false;
+        return;
     }
     if (movingPoint == 0) {
         tryMakeWal(event);
@@ -45,7 +46,7 @@ function move(event) {
     }
 }
 
-function setClick(event) {
+function handleClick(event) {
     if (!isAbleToClick) return;
     let pos = getMousePos(event);
     if (startPoint.isEqual(new Point(Math.floor(pos.x / gridLenth), Math.floor(pos.y / gridLenth)))) {
@@ -57,18 +58,5 @@ function setClick(event) {
     }
 }
 
-function initializeArray(value, height, width) {
-    var array = new Array(height);
-    for (let i = 0; i < height; i++) {
-        array[i] = new Array(width);
-        for (let j = 0; j < width; ++j) {
-            array[i][j] = value;
-        }
-    }    
-    return array;
-}
 
-function getMousePos(event) {
-    let rect = canvas.getBoundingClientRect();
-    return new Point(event.clientX - rect.left, event.clientY - rect.top);
-}
+

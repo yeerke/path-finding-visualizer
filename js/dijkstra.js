@@ -28,12 +28,3 @@ function shortestPath() {
     return [path, parent];
 }
 
-function isValidPoint(point) {
-    if (point.x < 0 || point.x >= length) {
-        return false;
-    }
-    if (point.y < 0 || point.y >= height) {
-        return false;
-    }
-    return true;
-}
