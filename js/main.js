@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var div = document.getElementById('tutorial'); 
         div.parentNode.removeChild(div); 
     });
-    document.getElementById("btn").addEventListener("click", clear);
+    document.getElementById("clear").addEventListener("click", clear);
     document.getElementById("path").addEventListener("click", visualizePath);
     document.getElementById("cnvs").addEventListener('mouseup', function() {
         canDrawWal = movingPoint = 0;

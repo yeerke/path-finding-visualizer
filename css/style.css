@@ -7,7 +7,7 @@
     left:500px; 
     background-color: lightgrey;
     width: 300px;
-    border: 15px solid rgb(15, 240, 240);
+    border: 15px solid black;
     padding: 50px;
     margin: 20px;
 }
@@ -21,4 +21,15 @@
     top:0; 
     left:0; 
     z-index:0 
+}
+
+#cnvs {
+    border:1px solid #000000;
+    display: block;
+    margin: 0 auto;
+}
+
+button {
+    margin:0 auto;
+    display:block;
 }
