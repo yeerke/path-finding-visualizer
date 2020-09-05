@@ -1,2 +1,2 @@
 # Path-Finding-Visualizer
-# link: https://yerkebulanzhumalin.github.io/path-finding-visulizer/
+# link: https://yerkebulanzhumalin.github.io/path-finding-visualizer/
